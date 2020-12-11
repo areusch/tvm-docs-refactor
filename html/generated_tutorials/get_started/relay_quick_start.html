@@ -1,0 +1,668 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick Start Tutorial for Compiling Deep Learning Models &mdash; tvm 0.8.dev0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/tlcpack_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/tvm-logo-square.png"/>
+  
+
+  
+  
+  
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <script type="text/javascript" src="../../_static/js/tlcpack_theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    
+<header class="header">
+    <div class="innercontainer">
+      <div class="headerInner d-flex justify-content-between align-items-center">
+          <div class="headerLogo">
+               <a href="https://tvm.apache.org/"><img src=https://tvm.apache.org/assets/images/logo.svg alt="logo"></a>
+          </div>
+
+          <div id="headMenu" class="headerNav">
+            <button type="button" id="closeHeadMenu" class="navCloseBtn"><img src="../../_static/img/close-icon.svg" alt="Close"></button>
+             <ul class="nav">
+                <li class="nav-item">
+                   <a class="nav-link" href=https://tvm.apache.org/community>Community</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://tvm.apache.org/download>Download</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://tvm.apache.org/vta>VTA</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://tvm.apache.org/blog>Blog</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://tvm.apache.org/docs>Docs</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://tvmconf.org>Conference</a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link" href=https://github.com/apache/tvm/>Github</a>
+                </li>
+             </ul>
+               <div class="responsivetlcdropdown">
+                 <button type="button" class="btn-link">
+                   ASF
+                 </button>
+                 <ul>
+                     <li>
+                       <a href=https://apache.org/>Apache Homepage</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/licenses/>License</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/foundation/sponsorship.html>Sponsorship</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/security/>Security</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/foundation/thanks.html>Thanks</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/events/current-event>Events</a>
+                     </li>
+                 </ul>
+               </div>
+          </div>
+            <div class="responsiveMenuIcon">
+              <button type="button" id="menuBtn" class="btn-menu"><img src="../../_static/img/menu-icon.svg" alt="Menu Icon"></button>
+            </div>
+
+            <div class="tlcDropdown">
+              <div class="dropdown">
+                <button type="button" class="btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ASF
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <ul>
+                     <li>
+                       <a href=https://apache.org/>Apache Homepage</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/licenses/>License</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/foundation/sponsorship.html>Sponsorship</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/security/>Security</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/foundation/thanks.html>Thanks</a>
+                     </li>
+                     <li>
+                       <a href=https://www.apache.org/events/current-event>Events</a>
+                     </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+       </div>
+    </div>
+ </header>
+ 
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side fixed">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/tvm-logo-small.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.8.dev0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install/index.html#first-steps-with-tvm">First Steps with TVM</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dive Into</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../import_models/index.html">Import Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../describe_models/index.html">Describe Models to TVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../optimize/index.html">Optimize Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deploy/index.html">Deploy and Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../microtvm/index.html">microTVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vta/index.html">VTA: Deep Learning Accelerator Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/how_to.html">Developer How-To Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contribute/index.html">Contribute to TVM</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Design Documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/index.html">Design and Architecture</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../langref/index.html">Language Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/python/index.html">Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/links.html">Links to Other API References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">MISC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../genindex.html">Index</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      
+      <nav class="wy-nav-top" aria-label="top navigation" data-toggle="wy-nav-top">
+        
+            <div class="togglemenu">
+
+            </div>
+            <div class="nav-content">
+              <!-- tvm -->
+              Table of content
+            </div>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> <span class="br-arrow">></span></li>
+        
+      <li>Quick Start Tutorial for Compiling Deep Learning Models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/generated_tutorials/get_started/relay_quick_start.rst.txt" rel="nofollow"> <img src="../../_static//img/source.svg" alt="viewsource"/></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-generated-tutorials-get-started-relay-quick-start-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="quick-start-tutorial-for-compiling-deep-learning-models">
+<span id="tutorial-relay-quick-start"></span><span id="sphx-glr-generated-tutorials-get-started-relay-quick-start-py"></span><h1>Quick Start Tutorial for Compiling Deep Learning Models<a class="headerlink" href="#quick-start-tutorial-for-compiling-deep-learning-models" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author</strong>: <a class="reference external" href="https://github.com/kevinthesun">Yao Wang</a>, <a class="reference external" href="https://github.com/SiNZeRo">Truman Tian</a></p>
+<p>This example shows how to build a neural network with Relay python frontend and
+generates a runtime library for Nvidia GPU with TVM.
+Notice that you need to build TVM with cuda and llvm enabled.</p>
+<div class="section" id="overview-for-supported-hardware-backend-of-tvm">
+<h2>Overview for Supported Hardware Backend of TVM<a class="headerlink" href="#overview-for-supported-hardware-backend-of-tvm" title="Permalink to this headline">¶</a></h2>
+<p>The image below shows hardware backend currently supported by TVM:</p>
+<img alt="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tvm_support_list.png" class="align-center" src="https://github.com/dmlc/web-data/raw/main/tvm/tutorial/tvm_support_list.png" />
+<p>In this tutorial, we’ll choose cuda and llvm as target backends.
+To begin with, let’s import Relay and TVM.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">relay</span>
+<span class="kn">from</span> <span class="nn">tvm.relay</span> <span class="kn">import</span> <span class="n">testing</span>
+<span class="kn">import</span> <span class="nn">tvm</span>
+<span class="kn">from</span> <span class="nn">tvm</span> <span class="kn">import</span> <span class="n">te</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">graph_runtime</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-neural-network-in-relay">
+<h2>Define Neural Network in Relay<a class="headerlink" href="#define-neural-network-in-relay" title="Permalink to this headline">¶</a></h2>
+<p>First, let’s define a neural network with relay python frontend.
+For simplicity, we’ll use pre-defined resnet-18 network in Relay.
+Parameters are initialized with Xavier initializer.
+Relay also supports other model formats such as MXNet, CoreML, ONNX and
+Tensorflow.</p>
+<p>In this tutorial, we assume we will do inference on our device
+and the batch size is set to be 1. Input images are RGB color
+images of size 224 * 224. We can call the <a class="reference internal" href="../../api/python/relay/index.html#tvm.relay.TupleWrapper.astext" title="tvm.relay.TupleWrapper.astext"><code class="xref any py py-meth docutils literal notranslate"><span class="pre">tvm.relay.TupleWrapper.astext()</span></code></a>
+to show the network structure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">num_class</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">image_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
+<span class="n">data_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,)</span> <span class="o">+</span> <span class="n">image_shape</span>
+<span class="n">out_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_class</span><span class="p">)</span>
+
+<span class="n">mod</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">resnet</span><span class="o">.</span><span class="n">get_workload</span><span class="p">(</span>
+    <span class="n">num_layers</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_shape</span><span class="o">=</span><span class="n">image_shape</span>
+<span class="p">)</span>
+
+<span class="c1"># set show_meta_data=True if you want to show meta data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">astext</span><span class="p">(</span><span class="n">show_meta_data</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>#[version = &quot;0.0.5&quot;]
+def @main(%data: Tensor[(1, 3, 224, 224), float32], %bn_data_gamma: Tensor[(3), float32], %bn_data_beta: Tensor[(3), float32], %bn_data_moving_mean: Tensor[(3), float32], %bn_data_moving_var: Tensor[(3), float32], %conv0_weight: Tensor[(64, 3, 7, 7), float32], %bn0_gamma: Tensor[(64), float32], %bn0_beta: Tensor[(64), float32], %bn0_moving_mean: Tensor[(64), float32], %bn0_moving_var: Tensor[(64), float32], %stage1_unit1_bn1_gamma: Tensor[(64), float32], %stage1_unit1_bn1_beta: Tensor[(64), float32], %stage1_unit1_bn1_moving_mean: Tensor[(64), float32], %stage1_unit1_bn1_moving_var: Tensor[(64), float32], %stage1_unit1_conv1_weight: Tensor[(64, 64, 3, 3), float32], %stage1_unit1_bn2_gamma: Tensor[(64), float32], %stage1_unit1_bn2_beta: Tensor[(64), float32], %stage1_unit1_bn2_moving_mean: Tensor[(64), float32], %stage1_unit1_bn2_moving_var: Tensor[(64), float32], %stage1_unit1_conv2_weight: Tensor[(64, 64, 3, 3), float32], %stage1_unit1_sc_weight: Tensor[(64, 64, 1, 1), float32], %stage1_unit2_bn1_gamma: Tensor[(64), float32], %stage1_unit2_bn1_beta: Tensor[(64), float32], %stage1_unit2_bn1_moving_mean: Tensor[(64), float32], %stage1_unit2_bn1_moving_var: Tensor[(64), float32], %stage1_unit2_conv1_weight: Tensor[(64, 64, 3, 3), float32], %stage1_unit2_bn2_gamma: Tensor[(64), float32], %stage1_unit2_bn2_beta: Tensor[(64), float32], %stage1_unit2_bn2_moving_mean: Tensor[(64), float32], %stage1_unit2_bn2_moving_var: Tensor[(64), float32], %stage1_unit2_conv2_weight: Tensor[(64, 64, 3, 3), float32], %stage2_unit1_bn1_gamma: Tensor[(64), float32], %stage2_unit1_bn1_beta: Tensor[(64), float32], %stage2_unit1_bn1_moving_mean: Tensor[(64), float32], %stage2_unit1_bn1_moving_var: Tensor[(64), float32], %stage2_unit1_conv1_weight: Tensor[(128, 64, 3, 3), float32], %stage2_unit1_bn2_gamma: Tensor[(128), float32], %stage2_unit1_bn2_beta: Tensor[(128), float32], %stage2_unit1_bn2_moving_mean: Tensor[(128), float32], %stage2_unit1_bn2_moving_var: Tensor[(128), float32], %stage2_unit1_conv2_weight: Tensor[(128, 128, 3, 3), float32], %stage2_unit1_sc_weight: Tensor[(128, 64, 1, 1), float32], %stage2_unit2_bn1_gamma: Tensor[(128), float32], %stage2_unit2_bn1_beta: Tensor[(128), float32], %stage2_unit2_bn1_moving_mean: Tensor[(128), float32], %stage2_unit2_bn1_moving_var: Tensor[(128), float32], %stage2_unit2_conv1_weight: Tensor[(128, 128, 3, 3), float32], %stage2_unit2_bn2_gamma: Tensor[(128), float32], %stage2_unit2_bn2_beta: Tensor[(128), float32], %stage2_unit2_bn2_moving_mean: Tensor[(128), float32], %stage2_unit2_bn2_moving_var: Tensor[(128), float32], %stage2_unit2_conv2_weight: Tensor[(128, 128, 3, 3), float32], %stage3_unit1_bn1_gamma: Tensor[(128), float32], %stage3_unit1_bn1_beta: Tensor[(128), float32], %stage3_unit1_bn1_moving_mean: Tensor[(128), float32], %stage3_unit1_bn1_moving_var: Tensor[(128), float32], %stage3_unit1_conv1_weight: Tensor[(256, 128, 3, 3), float32], %stage3_unit1_bn2_gamma: Tensor[(256), float32], %stage3_unit1_bn2_beta: Tensor[(256), float32], %stage3_unit1_bn2_moving_mean: Tensor[(256), float32], %stage3_unit1_bn2_moving_var: Tensor[(256), float32], %stage3_unit1_conv2_weight: Tensor[(256, 256, 3, 3), float32], %stage3_unit1_sc_weight: Tensor[(256, 128, 1, 1), float32], %stage3_unit2_bn1_gamma: Tensor[(256), float32], %stage3_unit2_bn1_beta: Tensor[(256), float32], %stage3_unit2_bn1_moving_mean: Tensor[(256), float32], %stage3_unit2_bn1_moving_var: Tensor[(256), float32], %stage3_unit2_conv1_weight: Tensor[(256, 256, 3, 3), float32], %stage3_unit2_bn2_gamma: Tensor[(256), float32], %stage3_unit2_bn2_beta: Tensor[(256), float32], %stage3_unit2_bn2_moving_mean: Tensor[(256), float32], %stage3_unit2_bn2_moving_var: Tensor[(256), float32], %stage3_unit2_conv2_weight: Tensor[(256, 256, 3, 3), float32], %stage4_unit1_bn1_gamma: Tensor[(256), float32], %stage4_unit1_bn1_beta: Tensor[(256), float32], %stage4_unit1_bn1_moving_mean: Tensor[(256), float32], %stage4_unit1_bn1_moving_var: Tensor[(256), float32], %stage4_unit1_conv1_weight: Tensor[(512, 256, 3, 3), float32], %stage4_unit1_bn2_gamma: Tensor[(512), float32], %stage4_unit1_bn2_beta: Tensor[(512), float32], %stage4_unit1_bn2_moving_mean: Tensor[(512), float32], %stage4_unit1_bn2_moving_var: Tensor[(512), float32], %stage4_unit1_conv2_weight: Tensor[(512, 512, 3, 3), float32], %stage4_unit1_sc_weight: Tensor[(512, 256, 1, 1), float32], %stage4_unit2_bn1_gamma: Tensor[(512), float32], %stage4_unit2_bn1_beta: Tensor[(512), float32], %stage4_unit2_bn1_moving_mean: Tensor[(512), float32], %stage4_unit2_bn1_moving_var: Tensor[(512), float32], %stage4_unit2_conv1_weight: Tensor[(512, 512, 3, 3), float32], %stage4_unit2_bn2_gamma: Tensor[(512), float32], %stage4_unit2_bn2_beta: Tensor[(512), float32], %stage4_unit2_bn2_moving_mean: Tensor[(512), float32], %stage4_unit2_bn2_moving_var: Tensor[(512), float32], %stage4_unit2_conv2_weight: Tensor[(512, 512, 3, 3), float32], %bn1_gamma: Tensor[(512), float32], %bn1_beta: Tensor[(512), float32], %bn1_moving_mean: Tensor[(512), float32], %bn1_moving_var: Tensor[(512), float32], %fc1_weight: Tensor[(1000, 512), float32], %fc1_bias: Tensor[(1000), float32]) -&gt; Tensor[(1, 1000), float32] {
+  %0 = nn.batch_norm(%data, %bn_data_gamma, %bn_data_beta, %bn_data_moving_mean, %bn_data_moving_var, epsilon=2e-05f, scale=False) /* ty=(Tensor[(1, 3, 224, 224), float32], Tensor[(3), float32], Tensor[(3), float32]) */;
+  %1 = %0.0;
+  %2 = nn.conv2d(%1, %conv0_weight, strides=[2, 2], padding=[3, 3, 3, 3], channels=64, kernel_size=[7, 7]) /* ty=Tensor[(1, 64, 112, 112), float32] */;
+  %3 = nn.batch_norm(%2, %bn0_gamma, %bn0_beta, %bn0_moving_mean, %bn0_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 112, 112), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
+  %4 = %3.0;
+  %5 = nn.relu(%4) /* ty=Tensor[(1, 64, 112, 112), float32] */;
+  %6 = nn.max_pool2d(%5, pool_size=[3, 3], strides=[2, 2], padding=[1, 1, 1, 1]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %7 = nn.batch_norm(%6, %stage1_unit1_bn1_gamma, %stage1_unit1_bn1_beta, %stage1_unit1_bn1_moving_mean, %stage1_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
+  %8 = %7.0;
+  %9 = nn.relu(%8) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %10 = nn.conv2d(%9, %stage1_unit1_conv1_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %11 = nn.batch_norm(%10, %stage1_unit1_bn2_gamma, %stage1_unit1_bn2_beta, %stage1_unit1_bn2_moving_mean, %stage1_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
+  %12 = %11.0;
+  %13 = nn.relu(%12) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %14 = nn.conv2d(%13, %stage1_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %15 = nn.conv2d(%9, %stage1_unit1_sc_weight, padding=[0, 0, 0, 0], channels=64, kernel_size=[1, 1]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %16 = add(%14, %15) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %17 = nn.batch_norm(%16, %stage1_unit2_bn1_gamma, %stage1_unit2_bn1_beta, %stage1_unit2_bn1_moving_mean, %stage1_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
+  %18 = %17.0;
+  %19 = nn.relu(%18) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %20 = nn.conv2d(%19, %stage1_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %21 = nn.batch_norm(%20, %stage1_unit2_bn2_gamma, %stage1_unit2_bn2_beta, %stage1_unit2_bn2_moving_mean, %stage1_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
+  %22 = %21.0;
+  %23 = nn.relu(%22) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %24 = nn.conv2d(%23, %stage1_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %25 = add(%24, %16) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %26 = nn.batch_norm(%25, %stage2_unit1_bn1_gamma, %stage2_unit1_bn1_beta, %stage2_unit1_bn1_moving_mean, %stage2_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 64, 56, 56), float32], Tensor[(64), float32], Tensor[(64), float32]) */;
+  %27 = %26.0;
+  %28 = nn.relu(%27) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %29 = nn.conv2d(%28, %stage2_unit1_conv1_weight, strides=[2, 2], padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %30 = nn.batch_norm(%29, %stage2_unit1_bn2_gamma, %stage2_unit1_bn2_beta, %stage2_unit1_bn2_moving_mean, %stage2_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
+  %31 = %30.0;
+  %32 = nn.relu(%31) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %33 = nn.conv2d(%32, %stage2_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %34 = nn.conv2d(%28, %stage2_unit1_sc_weight, strides=[2, 2], padding=[0, 0, 0, 0], channels=128, kernel_size=[1, 1]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %35 = add(%33, %34) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %36 = nn.batch_norm(%35, %stage2_unit2_bn1_gamma, %stage2_unit2_bn1_beta, %stage2_unit2_bn1_moving_mean, %stage2_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
+  %37 = %36.0;
+  %38 = nn.relu(%37) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %39 = nn.conv2d(%38, %stage2_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %40 = nn.batch_norm(%39, %stage2_unit2_bn2_gamma, %stage2_unit2_bn2_beta, %stage2_unit2_bn2_moving_mean, %stage2_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
+  %41 = %40.0;
+  %42 = nn.relu(%41) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %43 = nn.conv2d(%42, %stage2_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=128, kernel_size=[3, 3]) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %44 = add(%43, %35) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %45 = nn.batch_norm(%44, %stage3_unit1_bn1_gamma, %stage3_unit1_bn1_beta, %stage3_unit1_bn1_moving_mean, %stage3_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 128, 28, 28), float32], Tensor[(128), float32], Tensor[(128), float32]) */;
+  %46 = %45.0;
+  %47 = nn.relu(%46) /* ty=Tensor[(1, 128, 28, 28), float32] */;
+  %48 = nn.conv2d(%47, %stage3_unit1_conv1_weight, strides=[2, 2], padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %49 = nn.batch_norm(%48, %stage3_unit1_bn2_gamma, %stage3_unit1_bn2_beta, %stage3_unit1_bn2_moving_mean, %stage3_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
+  %50 = %49.0;
+  %51 = nn.relu(%50) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %52 = nn.conv2d(%51, %stage3_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %53 = nn.conv2d(%47, %stage3_unit1_sc_weight, strides=[2, 2], padding=[0, 0, 0, 0], channels=256, kernel_size=[1, 1]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %54 = add(%52, %53) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %55 = nn.batch_norm(%54, %stage3_unit2_bn1_gamma, %stage3_unit2_bn1_beta, %stage3_unit2_bn1_moving_mean, %stage3_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
+  %56 = %55.0;
+  %57 = nn.relu(%56) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %58 = nn.conv2d(%57, %stage3_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %59 = nn.batch_norm(%58, %stage3_unit2_bn2_gamma, %stage3_unit2_bn2_beta, %stage3_unit2_bn2_moving_mean, %stage3_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
+  %60 = %59.0;
+  %61 = nn.relu(%60) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %62 = nn.conv2d(%61, %stage3_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=256, kernel_size=[3, 3]) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %63 = add(%62, %54) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %64 = nn.batch_norm(%63, %stage4_unit1_bn1_gamma, %stage4_unit1_bn1_beta, %stage4_unit1_bn1_moving_mean, %stage4_unit1_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 256, 14, 14), float32], Tensor[(256), float32], Tensor[(256), float32]) */;
+  %65 = %64.0;
+  %66 = nn.relu(%65) /* ty=Tensor[(1, 256, 14, 14), float32] */;
+  %67 = nn.conv2d(%66, %stage4_unit1_conv1_weight, strides=[2, 2], padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %68 = nn.batch_norm(%67, %stage4_unit1_bn2_gamma, %stage4_unit1_bn2_beta, %stage4_unit1_bn2_moving_mean, %stage4_unit1_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
+  %69 = %68.0;
+  %70 = nn.relu(%69) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %71 = nn.conv2d(%70, %stage4_unit1_conv2_weight, padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %72 = nn.conv2d(%66, %stage4_unit1_sc_weight, strides=[2, 2], padding=[0, 0, 0, 0], channels=512, kernel_size=[1, 1]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %73 = add(%71, %72) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %74 = nn.batch_norm(%73, %stage4_unit2_bn1_gamma, %stage4_unit2_bn1_beta, %stage4_unit2_bn1_moving_mean, %stage4_unit2_bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
+  %75 = %74.0;
+  %76 = nn.relu(%75) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %77 = nn.conv2d(%76, %stage4_unit2_conv1_weight, padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %78 = nn.batch_norm(%77, %stage4_unit2_bn2_gamma, %stage4_unit2_bn2_beta, %stage4_unit2_bn2_moving_mean, %stage4_unit2_bn2_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
+  %79 = %78.0;
+  %80 = nn.relu(%79) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %81 = nn.conv2d(%80, %stage4_unit2_conv2_weight, padding=[1, 1, 1, 1], channels=512, kernel_size=[3, 3]) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %82 = add(%81, %73) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %83 = nn.batch_norm(%82, %bn1_gamma, %bn1_beta, %bn1_moving_mean, %bn1_moving_var, epsilon=2e-05f) /* ty=(Tensor[(1, 512, 7, 7), float32], Tensor[(512), float32], Tensor[(512), float32]) */;
+  %84 = %83.0;
+  %85 = nn.relu(%84) /* ty=Tensor[(1, 512, 7, 7), float32] */;
+  %86 = nn.global_avg_pool2d(%85) /* ty=Tensor[(1, 512, 1, 1), float32] */;
+  %87 = nn.batch_flatten(%86) /* ty=Tensor[(1, 512), float32] */;
+  %88 = nn.dense(%87, %fc1_weight, units=1000) /* ty=Tensor[(1, 1000), float32] */;
+  %89 = nn.bias_add(%88, %fc1_bias, axis=-1) /* ty=Tensor[(1, 1000), float32] */;
+  nn.softmax(%89) /* ty=Tensor[(1, 1000), float32] */
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="compilation">
+<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
+<p>Next step is to compile the model using the Relay/TVM pipeline.
+Users can specify the optimization level of the compilation.
+Currently this value can be 0 to 3. The optimization passes include
+operator fusion, pre-computation, layout transformation and so on.</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">relay.build()</span></code> returns three components: the execution graph in
+json format, the TVM module library of compiled functions specifically
+for this graph on the target hardware, and the parameter blobs of
+the model. During the compilation, Relay does the graph-level
+optimization while TVM does the tensor-level optimization, resulting
+in an optimized runtime module for model serving.</p>
+<p>We’ll first compile for Nvidia GPU. Behind the scene, <code class="xref py py-func docutils literal notranslate"><span class="pre">relay.build()</span></code>
+first does a number of graph-level optimizations, e.g. pruning, fusing, etc.,
+then registers the operators (i.e. the nodes of the optimized graphs) to
+TVM implementations to generate a <cite>tvm.module</cite>.
+To generate the module library, TVM will first transfer the high level IR
+into the lower intrinsic IR of the specified target backend, which is CUDA
+in this example. Then the machine code will be generated as the module library.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">opt_level</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">tvm</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">PassContext</span><span class="p">(</span><span class="n">opt_level</span><span class="o">=</span><span class="n">opt_level</span><span class="p">):</span>
+    <span class="n">lib</span> <span class="o">=</span> <span class="n">relay</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-pytb notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/andrew/Library/Caches/pypoetry/virtualenvs/tvm-Rgz5PqZI-py3.7/lib/python3.7/site-packages/sphinx_gallery/gen_rst.py&quot;, line 480, in _memory_usage
+    out = func()
+  File &quot;/Users/andrew/Library/Caches/pypoetry/virtualenvs/tvm-Rgz5PqZI-py3.7/lib/python3.7/site-packages/sphinx_gallery/gen_rst.py&quot;, line 465, in __call__
+    exec(self.code, self.globals)
+  File &quot;/Users/andrew/ws/tvm2/tutorials/get_started/relay_quick_start.py&quot;, line 101, in &lt;module&gt;
+    lib = relay.build(mod, target, params=params)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/relay/build_module.py&quot;, line 275, in build
+    graph_json, mod, params = bld_mod.build(mod, target, target_host, params)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/relay/build_module.py&quot;, line 138, in build
+    self._build(mod, target, target_host)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/_ctypes/packed_func.py&quot;, line 237, in __call__
+    raise get_last_ffi_error()
+tvm._ffi.base.TVMError: Traceback (most recent call last):
+  [bt] (8) 9   libtvm.dylib                        0x0000000119ac2259 tvm::NodeFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*)&gt;::operator()(tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*) const + 297
+  [bt] (7) 8   libtvm.dylib                        0x0000000119ac3b68 tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;::InitVTable()::&#39;lambda4&#39;(tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*)::__invoke(tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*) + 24
+  [bt] (6) 7   libtvm.dylib                        0x0000000119ac025c tvm::relay::ScheduleGetter::VisitExpr_(tvm::relay::CallNode const*) + 444
+  [bt] (5) 6   libtvm.dylib                        0x0000000119abf4f0 tvm::relay::backend::MemoizedExprTranslator&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; &gt;::VisitExpr(tvm::RelayExpr const&amp;) + 384
+  [bt] (4) 5   libtvm.dylib                        0x0000000119ac1f52 tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;::VisitExpr(tvm::RelayExpr const&amp;) + 178
+  [bt] (3) 4   libtvm.dylib                        0x0000000119ac2259 tvm::NodeFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*)&gt;::operator()(tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*) const + 297
+  [bt] (2) 3   libtvm.dylib                        0x0000000119ac3b68 tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;::InitVTable()::&#39;lambda4&#39;(tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*)::__invoke(tvm::runtime::ObjectRef const&amp;, tvm::relay::ExprFunctor&lt;tvm::runtime::Array&lt;tvm::te::Tensor, void&gt; (tvm::RelayExpr const&amp;)&gt;*) + 24
+  [bt] (1) 2   libtvm.dylib                        0x0000000119ac07d0 tvm::relay::ScheduleGetter::VisitExpr_(tvm::relay::CallNode const*) + 1840
+  [bt] (0) 1   libtvm.dylib                        0x0000000119c5e7a5 std::__1::__function::__func&lt;TVMFuncCreateFromCFunc::$_2, std::__1::allocator&lt;TVMFuncCreateFromCFunc::$_2&gt;, void (tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)&gt;::operator()(tvm::runtime::TVMArgs&amp;&amp;, tvm::runtime::TVMRetValue*&amp;&amp;) + 213
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/_ctypes/packed_func.py&quot;, line 81, in cfun
+    rv = local_pyfunc(*pyargs)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/relay/backend/compile_engine.py&quot;, line 300, in lower_call
+    best_impl, outputs = select_implementation(op, call.attrs, inputs, ret_type, target)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/relay/backend/compile_engine.py&quot;, line 189, in select_implementation
+    all_impls = get_valid_implementations(op, attrs, inputs, out_type, target)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/relay/backend/compile_engine.py&quot;, line 130, in get_valid_implementations
+    strategy = fstrategy(attrs, inputs, out_type, target)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/target/generic_func.py&quot;, line 46, in __call__
+    return _ffi_api.GenericFuncCallFunc(self, *args)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/_ctypes/packed_func.py&quot;, line 237, in __call__
+    raise get_last_ffi_error()
+  [bt] (5) 6   ???                                 0x00007ffee5942bc0 0x0 + 140732750113728
+  [bt] (4) 5   _ctypes.cpython-37m-darwin.so       0x000000010be47347 ffi_call_unix64 + 79
+  [bt] (3) 4   libtvm.dylib                        0x0000000119c5c468 TVMFuncCall + 72
+  [bt] (2) 3   libtvm.dylib                        0x0000000119562142 std::__1::__function::__func&lt;tvm::$_5, std::__1::allocator&lt;tvm::$_5&gt;, void (tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)&gt;::operator()(tvm::runtime::TVMArgs&amp;&amp;, tvm::runtime::TVMRetValue*&amp;&amp;) + 178
+  [bt] (1) 2   libtvm.dylib                        0x000000011955ffd7 tvm::GenericFunc::CallPacked(tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*) const + 743
+  [bt] (0) 1   libtvm.dylib                        0x0000000119c5e7a5 std::__1::__function::__func&lt;TVMFuncCreateFromCFunc::$_2, std::__1::allocator&lt;TVMFuncCreateFromCFunc::$_2&gt;, void (tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)&gt;::operator()(tvm::runtime::TVMArgs&amp;&amp;, tvm::runtime::TVMRetValue*&amp;&amp;) + 213
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/_ctypes/packed_func.py&quot;, line 81, in cfun
+    rv = local_pyfunc(*pyargs)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/relay/op/strategy/cuda.py&quot;, line 682, in dense_strategy_cuda
+    if nvcc.have_tensorcore(tvm.gpu(0).compute_version):
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/runtime_ctypes.py&quot;, line 237, in compute_version
+    return self._GetDeviceAttr(self.device_type, self.device_id, 4)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/runtime_ctypes.py&quot;, line 204, in _GetDeviceAttr
+    return tvm.runtime._ffi_api.GetDeviceAttr(device_type, device_id, attr_id)
+  File &quot;/Users/andrew/ws/tvm2/docs/../python/tvm/_ffi/_ctypes/packed_func.py&quot;, line 237, in __call__
+    raise get_last_ffi_error()
+  [bt] (6) 7   ???                                 0x00007ffee59415d0 0x0 + 140732750108112
+  [bt] (5) 6   _ctypes.cpython-37m-darwin.so       0x000000010be47347 ffi_call_unix64 + 79
+  [bt] (4) 5   libtvm.dylib                        0x0000000119c5c468 TVMFuncCall + 72
+  [bt] (3) 4   libtvm.dylib                        0x0000000119c5ec1c std::__1::__function::__func&lt;$_4, std::__1::allocator&lt;$_4&gt;, void (tvm::runtime::TVMArgs, tvm::runtime::TVMRetValue*)&gt;::operator()(tvm::runtime::TVMArgs&amp;&amp;, tvm::runtime::TVMRetValue*&amp;&amp;) + 220
+  [bt] (2) 3   libtvm.dylib                        0x0000000119c5d993 tvm::runtime::DeviceAPIManager::GetAPI(int, bool) + 371
+  [bt] (1) 2   libtvm.dylib                        0x0000000119c5dbbb tvm::runtime::DeviceAPIManager::GetAPI(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, bool) + 411
+  [bt] (0) 1   libtvm.dylib                        0x0000000118df2d0f dmlc::LogMessageFatal::~LogMessageFatal() + 111
+  File &quot;../src/runtime/c_runtime_api.cc&quot;, line 131
+TVMError:
+---------------------------------------------------------------
+An internal invariant was violated during the execution of TVM.
+Please read TVM&#39;s error reporting guidelines.
+More details can be found here: https://discuss.tvm.ai/t/error-reporting/7793.
+---------------------------------------------------------------
+  Check failed: allow_missing == false: Device API gpu is not enabled.
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-generate-library">
+<h2>Run the generate library<a class="headerlink" href="#run-the-generate-library" title="Permalink to this headline">¶</a></h2>
+<p>Now we can create graph runtime and run the module on Nvidia GPU.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create random input</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">gpu</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">data_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="c1"># create module</span>
+<span class="n">module</span> <span class="o">=</span> <span class="n">graph_runtime</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">ctx</span><span class="p">))</span>
+<span class="c1"># set input and parameters</span>
+<span class="n">module</span><span class="o">.</span><span class="n">set_input</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="c1"># run</span>
+<span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="c1"># get output</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">out_shape</span><span class="p">))</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">()</span>
+
+<span class="c1"># Print first 10 elements of output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="save-and-load-compiled-module">
+<h2>Save and Load Compiled Module<a class="headerlink" href="#save-and-load-compiled-module" title="Permalink to this headline">¶</a></h2>
+<p>We can also save the graph, lib and parameters into files and load them
+back in deploy environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the graph, lib and params into separate files</span>
+<span class="kn">from</span> <span class="nn">tvm.contrib</span> <span class="kn">import</span> <span class="n">utils</span>
+
+<span class="n">temp</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">tempdir</span><span class="p">()</span>
+<span class="n">path_lib</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;deploy_lib.tar&quot;</span><span class="p">)</span>
+<span class="n">lib</span><span class="o">.</span><span class="n">export_library</span><span class="p">(</span><span class="n">path_lib</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the module back.</span>
+<span class="n">loaded_lib</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">load_module</span><span class="p">(</span><span class="n">path_lib</span><span class="p">)</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">tvm</span><span class="o">.</span><span class="n">nd</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">data_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">))</span>
+
+<span class="n">module</span> <span class="o">=</span> <span class="n">graph_runtime</span><span class="o">.</span><span class="n">GraphModule</span><span class="p">(</span><span class="n">loaded_lib</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">](</span><span class="n">ctx</span><span class="p">))</span>
+<span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">input_data</span><span class="p">)</span>
+<span class="n">out_deploy</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">asnumpy</span><span class="p">()</span>
+
+<span class="c1"># Print first 10 elements of output</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out_deploy</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># check whether the output from deployed module is consistent with original one</span>
+<span class="n">tvm</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">out_deploy</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-generated-tutorials-get-started-relay-quick-start-py">
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/d4e91619596efdd42971610a1ac2885d/relay_quick_start.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">relay_quick_start.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/63f80efae3887fff3df9d015b9d8eb8f/relay_quick_start.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">relay_quick_start.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          
+
+<footer>
+
+<div id="button" class="backtop"><img src="../../_static//img/right.svg" alt="backtop"/> </div>
+<section class="footerSec">
+    <div class="footerHeader">
+      <ul class="d-flex align-md-items-center justify-content-between flex-column flex-md-row">
+        <li class="copywrite d-flex align-items-center">
+          <h5 id="copy-right-info">© 2020 Apache Software Foundation | All right reserved</h5>
+        </li>
+      </ul>
+
+    </div>
+
+    <ul>
+      <li class="footernote">Copyright © 2020 The Apache Software Foundation. Apache TVM, Apache, the Apache feather, and the Apache TVM project logo are either trademarks or registered trademarks of the Apache Software Foundation.</li>
+    </ul>
+
+</section>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-75982049-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

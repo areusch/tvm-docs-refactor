@@ -1,0 +1,17 @@
+
+:orphan:
+
+.. _sphx_glr_generated_tutorials_language_sg_execution_times:
+
+Computation times
+=================
+**00:01.018** total execution time for **generated_tutorials_language** files:
+
+- **00:00.554**: :ref:`sphx_glr_generated_tutorials_language_tensorize.py` (``tensorize.py``)
+- **00:00.105**: :ref:`sphx_glr_generated_tutorials_language_reduction.py` (``reduction.py``)
+- **00:00.080**: :ref:`sphx_glr_generated_tutorials_language_extern_op.py` (``extern_op.py``)
+- **00:00.079**: :ref:`sphx_glr_generated_tutorials_language_schedule_primitives.py` (``schedule_primitives.py``)
+- **00:00.059**: :ref:`sphx_glr_generated_tutorials_language_tuple_inputs.py` (``tuple_inputs.py``)
+- **00:00.052**: :ref:`sphx_glr_generated_tutorials_language_scan.py` (``scan.py``)
+- **00:00.049**: :ref:`sphx_glr_generated_tutorials_language_intrin_math.py` (``intrin_math.py``)
+- **00:00.041**: :ref:`sphx_glr_generated_tutorials_language_tedd.py` (``tedd.py``)

@@ -1,0 +1,11 @@
+
+:orphan:
+
+.. _sphx_glr_generated_tutorials_micro_sg_execution_times:
+
+Computation times
+=================
+**00:00.090** total execution time for **generated_tutorials_micro** files:
+
+- **00:00.051**: :ref:`sphx_glr_generated_tutorials_micro_micro_tflite.py` (``micro_tflite.py``)
+- **00:00.038**: :ref:`sphx_glr_generated_tutorials_micro_micro_reference_vm.py` (``micro_reference_vm.py``)

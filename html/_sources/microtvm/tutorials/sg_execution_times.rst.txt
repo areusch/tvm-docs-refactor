@@ -1,0 +1,14 @@
+
+:orphan:
+
+.. _sphx_glr_microtvm_tutorials_sg_execution_times:
+
+Computation times
+=================
+**00:00.003** total execution time for **microtvm_tutorials** files:
+
++--------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_microtvm_tutorials_micro_tflite.py` (``micro_tflite.py``)             | 00:00.003 | 0.0 MB |
++--------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_microtvm_tutorials_micro_reference_vm.py` (``micro_reference_vm.py``) | 00:00.000 | 0.0 MB |
++--------------------------------------------------------------------------------------+-----------+--------+

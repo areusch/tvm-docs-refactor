@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr_describe_models_relay_tutorials_sg_execution_times:
+
+Computation times
+=================
+**00:05.301** total execution time for **describe_models_relay_tutorials** files:
+
++-------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_relay_tutorials_relay_quick_start.py` (``relay_quick_start.py``) | 00:05.301 | 0.0 MB |
++-------------------------------------------------------------------------------------------------+-----------+--------+

@@ -1,0 +1,18 @@
+
+:orphan:
+
+.. _sphx_glr_optimize_autoscheduler_tutorials_sg_execution_times:
+
+Computation times
+=================
+**00:07.610** total execution time for **optimize_autoscheduler_tutorials** files:
+
++------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autoscheduler_tutorials_tune_network_cuda.py` (``tune_network_cuda.py``)           | 00:07.389 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autoscheduler_tutorials_tune_matmul_x86.py` (``tune_matmul_x86.py``)               | 00:00.210 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autoscheduler_tutorials_tune_conv2d_layer_cuda.py` (``tune_conv2d_layer_cuda.py``) | 00:00.012 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autoscheduler_tutorials_tune_network_x86.py` (``tune_network_x86.py``)             | 00:00.000 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------+-----------+--------+

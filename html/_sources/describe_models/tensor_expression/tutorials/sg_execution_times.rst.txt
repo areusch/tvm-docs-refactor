@@ -1,0 +1,28 @@
+
+:orphan:
+
+.. _sphx_glr_describe_models_tensor_expression_tutorials_sg_execution_times:
+
+Computation times
+=================
+**00:00.142** total execution time for **describe_models_tensor_expression_tutorials** files:
+
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_reduction.py` (``reduction.py``)                             | 00:00.080 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_scan.py` (``scan.py``)                                       | 00:00.025 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tensor_expr_get_started.py` (``tensor_expr_get_started.py``) | 00:00.016 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_intrin_math.py` (``intrin_math.py``)                         | 00:00.016 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tedd.py` (``tedd.py``)                                       | 00:00.003 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_extern_op.py` (``extern_op.py``)                             | 00:00.001 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_schedule_primitives.py` (``schedule_primitives.py``)         | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tensorize.py` (``tensorize.py``)                             | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tuple_inputs.py` (``tuple_inputs.py``)                       | 00:00.000 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------------+-----------+--------+

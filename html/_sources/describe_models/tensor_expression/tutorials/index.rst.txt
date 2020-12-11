@@ -1,0 +1,210 @@
+:orphan:
+
+
+
+.. _sphx_glr_describe_models_tensor_expression_tutorials:
+
+Tensor Expression and Schedules
+-------------------------------
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an introduction about using TEDD to visualize tensor expressions.">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_tedd_thumb.png
+     :alt: Use Tensor Expression Debug Display (TEDD) for Visualization
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tedd.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/tedd
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Often we want to compute multiple outputs with the same shape within a single loop or perform r...">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_tuple_inputs_thumb.png
+     :alt: Compute and Reduce with Tuple Inputs
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tuple_inputs.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/tuple_inputs
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="While TVM supports transparent code generation, sometimes it is also helpful to incorporate man...">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_extern_op_thumb.png
+     :alt: External Tensor Functions
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_extern_op.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/extern_op
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an introduction material on how to do reduction in TVM. Associative reduction operators...">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_reduction_thumb.png
+     :alt: Reduction
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_reduction.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/reduction
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an introduction material on how to do recurrent computing in TVM. Recurrent computing i...">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_scan_thumb.png
+     :alt: Scan and Recurrent Kernel
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_scan.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/scan
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="While TVM supports basic arithmetic operations. In many cases usually we will need more complic...">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_intrin_math_thumb.png
+     :alt: Intrinsics and Math Functions
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_intrin_math.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/intrin_math
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an introductory tutorial to the Tensor expression language in TVM. TVM uses a domain sp...">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_tensor_expr_get_started_thumb.png
+     :alt: Get Started with Tensor Expression
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tensor_expr_get_started.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/tensor_expr_get_started
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="TVM is a domain specific language for efficient kernel construction.">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_schedule_primitives_thumb.png
+     :alt: Schedule Primitives in TVM
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_schedule_primitives.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/schedule_primitives
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an introduction material on how to perform tensorization in TVM.">
+
+.. only:: html
+
+ .. figure:: /describe_models/tensor_expression/tutorials/images/thumb/sphx_glr_tensorize_thumb.png
+     :alt: Use Tensorize to Leverage Hardware Intrinsics
+
+     :ref:`sphx_glr_describe_models_tensor_expression_tutorials_tensorize.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /describe_models/tensor_expression/tutorials/tensorize
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -1,0 +1,22 @@
+
+:orphan:
+
+.. _sphx_glr_optimize_autotvm_tutorials_sg_execution_times:
+
+Computation times
+=================
+**00:00.356** total execution time for **optimize_autotvm_tutorials** files:
+
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autotvm_tutorials_tune_conv2d_cuda.py` (``tune_conv2d_cuda.py``)           | 00:00.356 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autotvm_tutorials_tune_relay_arm.py` (``tune_relay_arm.py``)               | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autotvm_tutorials_tune_relay_cuda.py` (``tune_relay_cuda.py``)             | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autotvm_tutorials_tune_relay_mobile_gpu.py` (``tune_relay_mobile_gpu.py``) | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autotvm_tutorials_tune_relay_x86.py` (``tune_relay_x86.py``)               | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_optimize_autotvm_tutorials_tune_simple_template.py` (``tune_simple_template.py``)   | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
